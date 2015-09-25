@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<?php
+  include_once('base.php');
+  setTitle("다이어트 워");
+?>
 
 
-  </head>
-  <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-    <script src="js/bootstrap.min.js"></script>
-    <div class="panel panel-default">
-      <div class="panel-heading"><button type="button" class="btn btn-link"><i class="glyphicon glyphicon-align-justify"></i></button>다이어트 워</div>
-      <div class="panel-body">
+<!-- 이부분만 바꿔서 수정하면 됩니다. -->
+<? startblock('content'); ?>
+
+
         <h1>시즌7</h1>
         <div class="row">
           <div class="col-xs-4 col-xs-offset-2">
@@ -46,7 +39,13 @@
          </div>
         </div>
       </div>
-      <div class="panel-footer">Copyright 2015. JUCY all right reserved</div>
-    </div>    
-  </body>
-</html>
+
+
+<?endblock('content');
+  startblock('head');
+  echo "<title> JUCY | ".$title."</title>";
+  endblock('head');
+  startblock('content-title');
+  echo $title;
+  endblock('content-title');
+?>
