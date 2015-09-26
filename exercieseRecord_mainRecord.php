@@ -8,6 +8,8 @@
 <!-- 이부분만 바꿔서 수정하면 됩니다. -->
 <? startblock('content'); ?>
 
+    
+      
 
         <nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -28,11 +30,13 @@
               <option value="ShoulderPress">Shoulder Press</option>
               <option value="DeadLift">Dead Lift</option>
             </select>
-            <img src="test_graph.png" width="80%">
             <input type="submit">
+            <img src="test_graph.png" width="80%">
+            
           </form>
 
       </div>
+   
 
 
 <?endblock('content');
