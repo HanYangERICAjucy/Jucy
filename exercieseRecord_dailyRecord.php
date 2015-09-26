@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>daily record</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+<?php
+  include_once('base.php');
+  setTitle("운동기록 보기");
+?>
 
 
-  </head>
-  <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-    <script src="js/bootstrap.min.js"></script>
-    <div class="panel panel-default">
-      <div class="panel-heading"><button type="button" class="btn btn-link"><i class="glyphicon glyphicon-align-justify"></i></button>운동기록</div>
-      <div class="panel-body">
+<!-- 이부분만 바꿔서 수정하면 됩니다. -->
+<? startblock('content'); ?>
+
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div>
@@ -47,8 +37,19 @@
       </section>
           
       </div>
-      <div class="panel-footer">Copyright 2015. JUCY all right reserved</div>
-    </div>  
+
+
+
+<?endblock('content');
+  startblock('head');
+  echo "<title> JUCY | ".$title."</title>";
+  endblock('head');
+  startblock('content-title');
+  echo $title;
+  endblock('content-title');
+?>
+
+<? startblock('extra') ?>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.calendario.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
@@ -121,5 +122,4 @@
       });
     </script> 
     <script type="text/javascript" src="js/calendar.js" ></script> 
-  </body>
-</html>
+<? endblock('extra') ?>
