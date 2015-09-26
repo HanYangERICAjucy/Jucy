@@ -13,8 +13,8 @@
           <div class="container-fluid">
             <div>
               <ul class="nav navbar-nav">
-                <li class="active"><a href="exercieseRecord_mainRecord.html">주요기록</a></li>
-                <li ><a href="exercieseRecord_dailyRecord.html">매일기록</a></li>
+                <li class="active"><a href="exercieseRecord_mainRecord.php">주요기록</a></li>
+                <li ><a href="exercieseRecord_dailyRecord.php">매일기록</a></li>
               </ul>
             </div>
           </div>
