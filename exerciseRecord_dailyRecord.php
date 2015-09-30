@@ -12,8 +12,8 @@
           <div class="container-fluid">
             <div>
               <ul class="nav navbar-nav">
-                <li><a href="exercieseRecord_mainRecord.html">주요기록</a></li>
-                <li class="active"><a href="exercieseRecord_dailyRecord.html">매일기록</a></li>
+                <li><a href="exerciseRecord_mainRecord.php">주요기록</a></li>
+                <li class="active"><a href="exerciseRecord_dailyRecord.php">매일기록</a></li>
               </ul>
             </div>
           </div>
@@ -77,8 +77,8 @@
             caldata : codropsEvents,
             displayWeekAbbr : true
           } ),
-          $month = $( '#custom-month' ).html( cal.getMonthName() ),
-          $year = $( '#custom-year' ).html( cal.getYear() );
+          $month = $( '#custom-month' ).php( cal.getMonthName() ),
+          $year = $( '#custom-year' ).php( cal.getYear() );
 
         $( '#custom-next' ).on( 'click', function() {
           cal.gotoNextMonth( updateMonthYear );
@@ -88,8 +88,8 @@
         } );
 
         function updateMonthYear() {        
-          $month.html( cal.getMonthName() );
-          $year.html( cal.getYear() );
+          $month.php( cal.getMonthName() );
+          $year.php( cal.getYear() );
         }
 
         // just an example..
@@ -100,7 +100,7 @@
           var $events = $( '<div id="custom-content-reveal" class="custom-content-reveal"><h4>Events for ' + dateProperties.monthname + ' ' + dateProperties.day + ', ' + dateProperties.year + '</h4></div>' ),
             $close = $( '<span class="custom-content-close"></span>' ).on( 'click', hideEvents );
 
-          $events.append( $contentEl.html() , $close ).insertAfter( $wrapper );
+          $events.append( $contentEl.php() , $close ).insertAfter( $wrapper );
           
           setTimeout( function() {
             $events.css( 'top', '0%' );
