@@ -8,7 +8,7 @@
 <!-- 이부분만 바꿔서 수정하면 됩니다. -->
 <? startblock('content'); ?>
 
-        <nav class="navbar navbar-default">
+        <!--<nav class="navbar navbar-default">
           <div class="container-fluid">
             <div>
               <ul class="nav navbar-nav">
@@ -17,13 +17,18 @@
               </ul>
             </div>
           </div>
-        </nav>
+        </nav>-->
+
+        <div class="secondTab">
+          <a href="exerciseRecord_mainRecord.php"><p class="left" >주요기록</p></a>
+          <a href="exerciseRecord_dailyRecord.php"><p class="right" style="background-color:#DF314D">매일기록</p></a>
+        </div>
 
         <div class="container-fluid">
-          <section class="main">
+      <section class="main">
         <div class="custom-calendar-wrap">
           <div id="custom-inner" class="custom-inner">
-            <div class="custom-header clearfix">
+            <div class="custom-header">
               <nav>
                 <span id="custom-prev" class="custom-prev"></span>
                 <span id="custom-next" class="custom-next"></span>
@@ -77,8 +82,8 @@
             caldata : codropsEvents,
             displayWeekAbbr : true
           } ),
-          $month = $( '#custom-month' ).php( cal.getMonthName() ),
-          $year = $( '#custom-year' ).php( cal.getYear() );
+          $month = $( '#custom-month' ).html( cal.getMonthName() ),
+          $year = $( '#custom-year' ).html( cal.getYear() );
 
         $( '#custom-next' ).on( 'click', function() {
           cal.gotoNextMonth( updateMonthYear );
@@ -88,8 +93,8 @@
         } );
 
         function updateMonthYear() {        
-          $month.php( cal.getMonthName() );
-          $year.php( cal.getYear() );
+          $month.html( cal.getMonthName() );
+          $year.html( cal.getYear() );
         }
 
         // just an example..
@@ -100,7 +105,7 @@
           var $events = $( '<div id="custom-content-reveal" class="custom-content-reveal"><h4>Events for ' + dateProperties.monthname + ' ' + dateProperties.day + ', ' + dateProperties.year + '</h4></div>' ),
             $close = $( '<span class="custom-content-close"></span>' ).on( 'click', hideEvents );
 
-          $events.append( $contentEl.php() , $close ).insertAfter( $wrapper );
+          $events.append( $contentEl.html() , $close ).insertAfter( $wrapper );
           
           setTimeout( function() {
             $events.css( 'top', '0%' );
