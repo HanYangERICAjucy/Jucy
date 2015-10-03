@@ -1,5 +1,6 @@
 <?php
   require_once("lib/ti.php");
+  require_once('lib/sqftest.php');
   $title = "_";
   function setTitle($t)
   { 
