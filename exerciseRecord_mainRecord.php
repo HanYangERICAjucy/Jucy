@@ -27,20 +27,41 @@
         </div>
 
         <div class="container-fluid">
-          <form action="mainExerciseGraph.php">
-            <select name="mainExercise">
-              <option value="BenchPress">Bench Press</option>
-              <option value="Squat">Squat</option>
-              <option value="ShoulderPress">Shoulder Press</option>
-              <option value="DeadLift">Dead Lift</option>
+          <form >
+            <select name="mainExercise" onchange="changeGraph(this.form)">
+              <option value="0">Bench Press</option>
+              <option value="1">Squat</option>
+              <option value="2">Shoulder Press</option>
+              <option value="3">Dead Lift</option>
             </select>
-            <input type="submit">
-            <img src="test_graph.png" width="80%">
+           
+            <img id="graph"src="stuart.jpg" width="80%">
             
           </form>
 
       </div>
-   
+   <script type="text/javascript">
+   var img = new Array("stuart.jpg","dave.png","test_graph.png","lake.jpg");
+   function changeGraph(frm){
+    var exercise = frm.mainExercise.selectedIndex;
+
+    switch(exercise){
+      case 0:
+        frm.graph.src = img[0];
+        break;
+      case 1:
+        frm.graph.src = img[1];
+        break;
+      case 2:
+        frm.graph.src = img[2];
+        break;
+      case 3:
+        frm.graph.src = img[3];
+        break;
+
+    }
+   }
+   </script>
 
 
 <?endblock('content');
