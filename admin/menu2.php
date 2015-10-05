@@ -5,6 +5,32 @@
 <!-- 이부분만 바꿔서 수정하면 됩니다. -->
 <? startblock('content'); ?>
 
+<?
+
+if (!empty($_POST)) {
+  // POST가 빈 요청이 아닐때.
+  $round = $_POST['round'];
+  $upload_path = "./upload/".$round;
+
+  // uploader 객체를 생성한다. (라이브러리 직접 수정해도 됨)
+  $extentions = array ('image/pjpeg', 'image/jpeg', 'image/JPG', 'image/X-PNG', 'image/PNG', 'image/png', 'image/x-png', 'image/gif');
+  $uploader = new Uploader();
+  $uploader->set_extentions($extentions);
+
+  $uploader->set_directory($upload_path);
+
+  if ( $uploader->upload() ) {
+    $uploader->show_file();
+    echo "Success";
+  }
+}
+?>
+
+
+
+
+
+
 <div class="row" style="margin-left: auto; margin-right: auto;">
   <div class="container-fluid col-md-4">
     <h2>다이어트워</h2>
@@ -60,23 +86,39 @@
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
+        <form enctype="multipart/form-data" action="#" method="post">
+        <input type="hidden" name="MAX_FILE_SIZE" value="128288">
         <div class="modal-header">
           <p><button type="button" class="close" data-dismiss="modal">&times;</button></p>
           <h4 class="modal-title">사진추가</h4>
         </div>
         <div class="modal-body">
+
+
           <div class="form-group">
-            <label for="comment">Comment:</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
+
+          <form enctype="multipart/form-data" action="img_uploader.php" method="post">
+             <!-- 8.클라이언트쪽 업로드 제한용량을 설정함-->
+            <input type="hidden" name="MAX_FILE_SIZE" value="128288">
+            <b>파일:</b> 
+            <input type="file" name="upload" />
+            <select name="round">
+              <option value="1">1회차</option>
+              <option value="2">2회차</option>
+            </select>
+            <input type="hidden" name="type" value="image"/>
+            <div align="center"><input type="submit" name="upload_form" value="업로드" /></div>
+            <input type="hidden" name="upload_check" value="true" />
+          </form>
+
+
           </div>
+
         </div>
         <div class="modal-footer">
-          <label class="control-label">Select File</label>
-          <input id="input-40" type="file" class="file" multiple=true> 
-          <br />
-          <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
+        </form>
       </div>
     </div>
   </div>
