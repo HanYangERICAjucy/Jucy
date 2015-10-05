@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<head>
-  <title>GYM</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
-<body>
-  <div class="row" style="margin-left: auto; margin-right: auto;">
-    <div class="navbar navbar-inverse col-md-4">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="main.html">ADMIN PAGE</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<?php
+  include_once('./admin_base.php');
+?>
+
+<!-- 이부분만 바꿔서 수정하면 됩니다. -->
+<? startblock('content'); ?>
+
 
   <div class="row" style="margin-left: auto; margin-right: auto;">
     <div class="container-fluid col-md-4">
@@ -40,6 +28,5 @@
       </div>
     </div>
   </div>
- 
-</body>
-</html>
+
+ <? endblock('content'); ?>
