@@ -13,6 +13,7 @@ class Uploader
 
   private $extentions = array ('image/pjpeg', 'image/jpeg', 'image/JPG', 'image/X-PNG', 'image/PNG', 'image/png', 'image/x-png', 'image/gif');
   public $dir = "upload";
+  public $filename = None;
   
   public function set_extentions($extentions) {
     $this->extentions = $extentions;
@@ -20,12 +21,19 @@ class Uploader
 
   public function set_directory($dir) {
     $this->dir = $dir;
+    if(!file_exists($this->dir)) {
+      mkdir($this->dir,0777,true);
+    }
   }
 
-  public function show_file($path) {
+  public function set_filename($filename)
+  {
+    $this->filename = $filename;
+  }
 
-    echo '<p><img src="./'.$this->dir.'/'.$_FILES['upload']['name'].'" /></p>';
-    echo '<p>파일명: '.$_FILES['upload']['name'].'</p>';
+  public function show_file($path=None) {
+    if($path==None) $path=$this->dir.'/'.$_FILES['upload']['name'];
+    echo '<p><img src="./'.$path.'" /></p>';
   }
 
 
@@ -45,7 +53,8 @@ class Uploader
         // if ($_FILES['upload']['type']==$_POST['type']) {
         
           // 4.허용하는 이미지파일이라면 지정된 위치로 이동
-          if (move_uploaded_file ($_FILES['upload']['tmp_name'], "./".$this->dir."/{$_FILES['upload']['name']}")) {
+          if ($this->filename==None) $this->filename = $_FILES['upload']['name'];
+          if (move_uploaded_file ($_FILES['upload']['tmp_name'], "./".$this->dir."/".$this->filename)) {
 
             // 5.업로드된 이미지 파일을 출력
 
