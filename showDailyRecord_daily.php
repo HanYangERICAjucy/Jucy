@@ -10,11 +10,11 @@
 
 
         <ul class="nav nav-tabs">
-            <li><a href="showDailyRecord.php?day=<?=$_GET['day']?>">CrossFit</a></li>
-            <li><a href="showDailyRecord_weight.php?day=<?=$_GET['day']?>">Weight</a></li>
+            <li><a href="showDailyRecord.php">CrossFit</a></li>
+            <li><a href="showDailyRecord_weight.php">Weight</a></li>
             <li class="active"><a href="#">DailyWork</a></li>
       </ul>
-        <h1>9월 <?=$_GET['day']?>일</h1>
+        <h1>9월 17일</h1>
       <div class="container-fluid">
         <h2>기타 운동</h2> 
         <div class="well">

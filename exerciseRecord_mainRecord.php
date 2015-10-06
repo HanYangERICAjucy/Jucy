@@ -27,42 +27,77 @@
         </div>
 
         <div class="container-fluid">
-          <form >
-            <select name="mainExercise" onchange="changeGraph(this.form)">
-              <option value="0">Bench Press</option>
-              <option value="1">Squat</option>
-              <option value="2">Shoulder Press</option>
-              <option value="3">Dead Lift</option>
-            </select>
-           
-            <img id="graph"src="stuart.jpg" width="80%">
-            
-          </form>
-
+          <div class="dropdown mainExercise" >
+            <button id="dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" width="200px">Bench Press
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li value="0"><a href="#" onclick="changeGraph(0)">Bench Press</a></li>
+              <li value="1"><a href="#" onclick="changeGraph(1)">Squat</a></li>
+              <li value="2"><a href="#" onclick="changeGraph(2)">Shoulder Press</a></li>
+              <li value="3"><a href="#" onclick="changeGraph(3)">Dead Lift</a></li>
+            </ul>
+          </div>
+          <img id="graph"src="stuart.jpg" width="80%">
       </div>
+   
    <script type="text/javascript">
-   var img = new Array("stuart.jpg","dave.png","test_graph.png","lake.jpg");
-   function changeGraph(frm){
-    var exercise = frm.mainExercise.selectedIndex;
+       
+       var img = new Array("stuart.jpg","dave.png","test_graph.png","lake.jpg");
+      
+       function changeGraph (argument) {
+         var image = $("#graph");
 
-    switch(exercise){
-      case 0:
-        frm.graph.src = img[0];
-        break;
-      case 1:
-        frm.graph.src = img[1];
-        break;
-      case 2:
-        frm.graph.src = img[2];
-        break;
-      case 3:
-        frm.graph.src = img[3];
-        break;
+        switch(argument){
+          case 0:
+            $("#graph")[0].src = img[0];
+            $("#dropdown")[0].innerHTML = "Bench Press<span class='caret'></span>";
+            break;
+          case 1:
+            $("#graph")[0].src = img[1];
+            $("#dropdown")[0].innerHTML = "Squat<span class='caret'></span>";
+            break;
+          case 2:
+            $("#graph")[0].src = img[2];
+            $("#dropdown")[0].innerHTML = "Shoulder Press<span class='caret'></span>";
+            break;
+          case 3:
+            $("#graph")[0].src = img[3];
+            $("#dropdown")[0].innerHTML = "Dead Lift<span class='caret'></span>";
+            break;
 
+        }
+
+       }
+       </script>
+<?startblock('extra');?>
+
+<script src="js/Chart.min.js"></script>
+<script>
+var barChartData = {
+  // 가로축 라벨
+  labels : ["January","February","March","April","May","June","July"],
+  datasets : [
+    {
+      fillColor : "rgba(220,220,220,0.5)",
+      strokeColor : "rgba(220,220,220,0.8)",
+      highlightFill: "rgba(220,220,220,0.75)",
+      highlightStroke: "rgba(220,220,220,1)",
+      // 세로축 데이터들
+      data : [90,99,100,120,123,80,140]
     }
-   }
-   </script>
+  ]
 
+}
+window.onload = function(){
+  var ctx = document.getElementById("canvas").getContext("2d");
+  window.myBar = new Chart(ctx).Bar(barChartData, {
+    responsive : true
+  });
+}
+
+</script>
+
+<?endblock('extra');?>
 
 <?endblock('content');
   startblock('head');

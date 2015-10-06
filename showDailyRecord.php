@@ -10,10 +10,10 @@
 
     <ul class="nav nav-tabs">
       <li class="active"><a href="#">CrossFit</a></li>
-      <li><a href="showDailyRecord_weight.php?day=<?=$_GET['day']?>">Weight</a></li>
-      <li><a href="showDailyRecord_daily.php?day=<?=$_GET['day']?>">DailyWork</a></li>
+      <li><a href="showDailyRecord_weight.php">Weight</a></li>
+      <li><a href="showDailyRecord_daily.php">DailyWork</a></li>
     </ul>
-    <h1><?=$_GET['month']?>월 <?=$_GET['day']?>일</h1>
+    <h1>9월 17일</h1>
     <div class="container-fluid">
       <h2>오늘의 운동</h2> 
       <div class="well">text</div>

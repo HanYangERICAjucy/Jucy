@@ -1,7 +1,4 @@
 /*sy*/
-.container .open-sidebar{
-  z-index: 99
-}
 .panel-body{
   text-align: center;
 }
@@ -11,9 +8,7 @@
 }
 #sidebar{
   background-color: #DF314D;
-  height: 1000px;
-  z-index: 999;
-
+  height: 100%;
 }
 .container{
   /*height: 100%;하면 얘가 다 차지하고 밑으로 가버림 */
@@ -603,6 +598,7 @@ body, html {
           background: #DF314D;
           position: absolute;
           width: 240px;
+          height: 100%;
           left: -240px;
           box-sizing: border-box;
           -moz-box-sizing: border-box;
