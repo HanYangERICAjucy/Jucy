@@ -370,7 +370,6 @@ function modifyRECORD ($id, $date, $bench_press, $shoulder_press, $deadlift, $si
     
 
 
-//(미완성 | 태스트 필요)
 //오늘의 운동
 /* 오늘의 운동 입력 */
 function saveTODAYex($cross_list, $cross_url, $weight_list, $weight_url, $date)
@@ -388,7 +387,7 @@ function saveTODAYex($cross_list, $cross_url, $weight_list, $weight_url, $date)
     
     if(MYSQLI_NUM_rows($checkset) < 1)
     {
-        $resultset = mysqli_query($con, "insert into today_exercise values ('$date', '$cross_list', '$corss_rul', '$weight_list', '$weight_url')");
+        $resultset = mysqli_query($con, "insert into today_exercise values ('$date', '$cross_list', '$cross_url', '$weight_list', '$weight_url')");
         $res = array(array("success"));
     }
     else
@@ -446,10 +445,88 @@ function modifyTODAYex($cross_list, $cross_url, $weight_list, $weight_url, $date
     
     $checkset = mysqli_query($con, "delete from today_exercise where record_date = '$date'");
     
-    $resultset = mysqli_query($con, "insert into today_exercise values ('$date', '$cross_list', '$corss_rul', '$weight_list', '$weight_url')");
+    $resultset = mysqli_query($con, "insert into today_exercise values ('$date', '$cross_list', '$cross_url', '$weight_list', '$weight_url')");
         
     return array(array("success"));
 }
 
+
+//(미완성 | 태스트 필요)
+// 다이어트 워
+/* 투표 처리 */
+function vote($id, $number)
+{
+    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+
+    if (!$con)
+    {
+      die('연결 안됨: '.mysqli_error());
+    } else {
+      mysqli_select_db($con, "u242089643_tdc");
+    }
+    $checkvote = mysqli_query($con, "select * from user_info where id = '$id' and vote = 2");
+    if (MYSQLI_NUM_rows($checkvote) < 1)
+    {
+        $vote = mysqli_query($con, "update user_info set vote = 2 where id = '$id'");       
+        $countup = mysqli_query($con, "update diet_war set vote_count = vote_count + 1 where list_num = $number");
+        mysqli_close($con);    
+        return array(array("success"));
+    }
+    else
+    {
+        mysqli_close($con);
+        return array(array("empty"));
+    }
+}
+
+/* 튜표결과 초기화 */
+function voteRESET()
+{
+    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+
+    if (!$con)
+    {
+      die('연결 안됨: '.mysqli_error());
+    } else {
+      mysqli_select_db($con, "u242089643_tdc");
+    }
+    
+    $vote = mysqli_query($con, "update user_info set vote = 1 ");       
+    $countup = mysqli_query($con, "update diet_war set vote_count = 0");
+    mysqli_close($con);    
+    return array(array("success"));
+}
+
+/* 투표결과 반납 */
+function voteRESULT($length)
+{
+    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+
+    if (!$con)
+    {
+      die('연결 안됨: '.mysqli_error());
+    } else {
+      mysqli_select_db($con, "u242089643_tdc");
+    }
+    
+    $resultset = mysqli_query($con, "select * from diet_war where vote_count != 0 order by vote_count desc limit ".$length);     
+    if (MYSQLI_NUM_rows($resultset) < 1)
+    {
+         mysqli_close($con);
+        return array(array("empty"));
+    }
+    else
+    {
+        $result = array();
+        $row = array();
+        while($row = mysqli_fetch_array($resultset, MYSQLI_NUM))
+        {
+            array_push($result, $row);
+        }
+
+        mysqli_close($con);
+        return $result;
+    }
+}
 
 ?>
