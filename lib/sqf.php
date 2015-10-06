@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 //유저관리
 /*유저 등록 유무 확인 함수*/
 function checkuser($id, $con)
@@ -19,7 +19,7 @@ function checkuser($id, $con)
 /*유저 등록함수 sha256 변환작업까지 수행함함 아이디 중복시 empty를 반환함*/
 function adduser($id, $name, $passwd_in)
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
     $res = array();
     if (!$con)
     {
@@ -46,7 +46,7 @@ function adduser($id, $name, $passwd_in)
 /*유저 로그인 함수 성공시 success 실패시 empty를 이중 array 형식으로 반환 array 두번째 element로 아이디, 이름 정보 반환*/
 function login($id, $passwd_in)
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
 
     if (!$con)
     {
@@ -83,7 +83,7 @@ function login($id, $passwd_in)
 /*id 에 해당하는 유저의 래밸을 올림 일반회원을 정회원으로 올리는 기능밖에 없음*/
 function levelup($id)
 {
-     $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+     $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
 
     if (!$con)
     {
@@ -105,7 +105,7 @@ function levelup($id)
 /*모든 유저정보 반환*/
 function showUSER()
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
 
     if (!$con)
     {
@@ -136,7 +136,7 @@ function showUSER()
 /*id 검색결과 반환*/
 function searchID($id)
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
 
     if (!$con)
     {
@@ -167,7 +167,7 @@ function searchID($id)
 /*회원 이름 검색 결과 반환 */
 function searchNAME($name)
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
 
     if (!$con)
     {
@@ -198,7 +198,7 @@ function searchNAME($name)
 /* 회원 등급 반환 0: 승인대기 / 10: 일반회원 / 100: 관리자*/
 function searchLEVEL($level)
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
 
     if (!$con)
     {
@@ -229,7 +229,7 @@ function searchLEVEL($level)
 /*투표안한 유저목록 반환*/
 function searchDIDNTVOTE()
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
 
     if (!$con)
     {
@@ -262,7 +262,7 @@ function searchDIDNTVOTE()
 // 유저 기록 관리
 /* 유저 일일 기록 반환 */
 function dailyRECORD ($id, $date) {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
     
     if (!$con)
     {
@@ -293,7 +293,7 @@ function dailyRECORD ($id, $date) {
 
 /*(그래프)유저 기록 반환 id, 운동이름 (bench_press, shoulder_press, deadlift, sit_up), 출력할 목록의 최대 숫자 입력필요 */
 function getGRAPH ($id, $exercise_name, $limit) {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
     
     if (!$con)
     {
@@ -324,7 +324,7 @@ function getGRAPH ($id, $exercise_name, $limit) {
 
 /*유저 기록 입력 id, 날짜 운동기록 (bench_press, shoulder_press, deadlift, sit_up)입력 내용 없을시 0, 크로스핏 | 웨이트 기록 입력 내용 없을시 '' 입력*/
 function saveRECORD ($id, $date, $bench_press, $shoulder_press, $deadlift, $sit_up, $crossfit, $weight) {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
     
     if (!$con)
     {
@@ -352,7 +352,7 @@ function saveRECORD ($id, $date, $bench_press, $shoulder_press, $deadlift, $sit_
 
 /*유저 기록 수정 id, 날짜 운동기록 (bench_press, shoulder_press, deadlift, sit_up)입력 내용 없을시 0, 크로스핏 | 웨이트 기록 입력 내용 없을시 '' 입력*/
 function modifyRECORD ($id, $date, $bench_press, $shoulder_press, $deadlift, $sit_up, $crossfit, $weight) {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
     
     if (!$con)
     {
@@ -374,7 +374,7 @@ function modifyRECORD ($id, $date, $bench_press, $shoulder_press, $deadlift, $si
 /* 오늘의 운동 입력 */
 function saveTODAYex($cross_list, $cross_url, $weight_list, $weight_url, $date)
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
     $res = array();
     if (!$con)
     {
@@ -401,7 +401,7 @@ function saveTODAYex($cross_list, $cross_url, $weight_list, $weight_url, $date)
 /* 오늘의 운동 목록 반환 */
 function showTODAYex($date)
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
     $res = array();
     if (!$con)
     {
@@ -434,7 +434,7 @@ function showTODAYex($date)
 /* 오늘의 운동 수정 */
 function modifyTODAYex($cross_list, $cross_url, $weight_list, $weight_url, $date)
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
     $res = array();
     if (!$con)
     {
@@ -456,7 +456,7 @@ function modifyTODAYex($cross_list, $cross_url, $weight_list, $weight_url, $date
 /* 투표 처리 */
 function vote($id, $number)
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
 
     if (!$con)
     {
@@ -482,7 +482,7 @@ function vote($id, $number)
 /* 튜표결과 초기화 */
 function voteRESET()
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
 
     if (!$con)
     {
@@ -500,7 +500,7 @@ function voteRESET()
 /* 투표결과 반납 */
 function voteRESULT($length)
 {
-    $con = mysqli_connect("202.150.213.206", "u242089643_jucy", "gksdid1!");
+    $con = mysqli_connect("localhost", "u242089643_jucy", "gksdid1!");
 
     if (!$con)
     {
@@ -528,5 +528,4 @@ function voteRESULT($length)
         return $result;
     }
 }
-
 ?>
