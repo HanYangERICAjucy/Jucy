@@ -151,7 +151,7 @@ window.Modernizr=function(a,b,c){function z(a){j.cssText=a}function A(a,b){retur
 					
 					if ( day <= monthLength && ( i > 0 || j >= p ) ) {
 
-						inner += '<a href="showDailyRecord.php?day='+day+'"><span class="fc-date">' + day + '</span></a><span class="fc-weekday">' + this.options.weekabbrs[ j + this.options.startIn > 6 ? j + this.options.startIn - 6 - 1 : j + this.options.startIn ] + '</span>';
+						inner += '<a href="showDailyRecord.php?day='+day+'&month='+this.month+'"><span class="fc-date">' + day + '</span></a><span class="fc-weekday">' + this.options.weekabbrs[ j + this.options.startIn > 6 ? j + this.options.startIn - 6 - 1 : j + this.options.startIn ] + '</span>';
 
 						// this day is:
 						var strdate = ( this.month + 1 < 10 ? '0' + ( this.month + 1 ) : this.month + 1 ) + '-' + ( day < 10 ? '0' + day : day ) + '-' + this.year,
