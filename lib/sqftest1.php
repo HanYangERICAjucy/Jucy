@@ -58,7 +58,7 @@ function login($id, $passwd_in)
     if($check != "empty")
     {
         $passwd = hash("sha256", trim($id.$passwd_in));
-        $resultset = mysqli_query($con, "select id, name from user_info where id = '$id' and passwd = '$passwd'");
+        $resultset = mysqli_query($con, "select id, name, user_level from user_info where id = '$id' and passwd = '$passwd'");
         if (MYSQLI_NUM_rows($resultset) < 1)
         {
             mysqli_close($con);
