@@ -59,9 +59,17 @@
 
 <script src="js/Chart.min.js"></script>
 <script>
+ function showGraph(){
+  <?$records=getGRAPH($_GET['id'],$_GET['exerciseName'],8);
+    $x_label = array();
+    $y_label = array();?>
 var barChartData = {
   // 가로축 라벨
-  labels : ["January","February","March","April","May","June","July"],
+  <?foreach ($records as $key => $value) {
+      array_push($x_label, '"'.$value[1].'"');
+      array_push($y_label, '"'.$value[0].'"');
+    }?>
+  labels : [<?echo implode(',',$x_label);?>],
   datasets : [
     {
       fillColor : "rgba(220,220,220,0.5)",
@@ -69,7 +77,7 @@ var barChartData = {
       highlightFill: "rgba(220,220,220,0.75)",
       highlightStroke: "rgba(220,220,220,1)",
       // 세로축 데이터들
-      data : [90,99,100,120,123,80,140]
+      data : [<?echo implode(',',$y_label);?>]
     }
   ]
 
@@ -80,9 +88,9 @@ window.onload = function(){
     responsive : true
   });
 }
-
+}
+showGraph();
 </script>
-
 <?endblock('extra');?>
 
 <?endblock('content');
