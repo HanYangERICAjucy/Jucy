@@ -28,54 +28,59 @@
 
         <div class="container-fluid">
           <div class="dropdown mainExercise" >
-            <button id="dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" width="200px">Bench Press
+            <button id="dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" width="200px">
+              <?if($_GET['exerciseName']=='bench_press'){
+                echo 'Bench Press';
+              }else if($_GET['exerciseName']=='squat'){
+                echo 'Squat';
+              }else if($_GET['exerciseName']=='shoulder_press'){
+                echo 'Shoulder Press';
+              }else{
+                echo 'Dead Lift';
+              }?>
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li value="0"><a href="#" onclick="changeGraph(0)">Bench Press</a></li>
-              <li value="1"><a href="#" onclick="changeGraph(1)">Squat</a></li>
-              <li value="2"><a href="#" onclick="changeGraph(2)">Shoulder Press</a></li>
-              <li value="3"><a href="#" onclick="changeGraph(3)">Dead Lift</a></li>
+              <li value="0"><a href="exerciseRecord_mainRecord.php?id=aaaa&exerciseName=bench_press" >Bench Press</a></li>
+              <li value="1"><a href="exerciseRecord_mainRecord.php?id=aaaa&exerciseName=squat" >Squat</a></li>
+              <li value="2"><a href="exerciseRecord_mainRecord.php?id=aaaa&exerciseName=shoulder_press" >Shoulder Press</a></li>
+              <li value="3"><a href="exerciseRecord_mainRecord.php?id=aaaa&exerciseName=deadlift" >Dead Lift</a></li>
             </ul>
           </div>
-          <img id="graph"src="stuart.jpg" width="80%">
+           
+           <div style="width: 100%">
+              <canvas id="canvas" height="450" width="600"></canvas>
+            </div>
       </div>
    
-   <script type="text/javascript">
-       
-       var img = new Array("stuart.jpg","dave.png","test_graph.png","lake.jpg");
-      
-       function changeGraph (argument) {
-         var image = $("#graph");
 
-        switch(argument){
-          case 0:
-            $("#graph")[0].src = img[0];
-            $("#dropdown")[0].innerHTML = "Bench Press<span class='caret'></span>";
-            break;
-          case 1:
-            $("#graph")[0].src = img[1];
-            $("#dropdown")[0].innerHTML = "Squat<span class='caret'></span>";
-            break;
-          case 2:
-            $("#graph")[0].src = img[2];
-            $("#dropdown")[0].innerHTML = "Shoulder Press<span class='caret'></span>";
-            break;
-          case 3:
-            $("#graph")[0].src = img[3];
-            $("#dropdown")[0].innerHTML = "Dead Lift<span class='caret'></span>";
-            break;
 
-        }
+<?endblock('content');
+  startblock('head');
+  echo "<title> JUCY | ".$title."</title>";
+  endblock('head');
+  startblock('content-title');
+  echo $title;
+  endblock('content-title');
+?>
 
-       }
-       </script>
+
+
+
 <?startblock('extra');?>
 
 <script src="js/Chart.min.js"></script>
 <script>
+ function showGraph(){
+  <?$records=getGRAPH($_GET['id'],$_GET['exerciseName'],8);
+    $x_label = array();
+    $y_label = array();?>
 var barChartData = {
   // 가로축 라벨
-  labels : ["January","February","March","April","May","June","July"],
+  <?foreach ($records as $key => $value) {
+      array_push($x_label, '"'.$value[1].'"');
+      array_push($y_label, '"'.$value[0].'"');
+    }?>
+  labels : [<?echo implode(',',$x_label);?>],
   datasets : [
     {
       fillColor : "rgba(220,220,220,0.5)",
@@ -83,7 +88,7 @@ var barChartData = {
       highlightFill: "rgba(220,220,220,0.75)",
       highlightStroke: "rgba(220,220,220,1)",
       // 세로축 데이터들
-      data : [90,99,100,120,123,80,140]
+      data : [<?echo implode(',',$y_label);?>]
     }
   ]
 
@@ -94,16 +99,8 @@ window.onload = function(){
     responsive : true
   });
 }
-
+}
+showGraph();
 </script>
 
 <?endblock('extra');?>
-
-<?endblock('content');
-  startblock('head');
-  echo "<title> JUCY | ".$title."</title>";
-  endblock('head');
-  startblock('content-title');
-  echo $title;
-  endblock('content-title');
-?>
