@@ -27,6 +27,7 @@
         </div>
 
         <div class="container-fluid">
+
           <div class="dropdown mainExercise" >
             <button id="dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" width="200px">
               <?if($_GET['exerciseName']=='bench_press'){
@@ -50,9 +51,39 @@
            <div style="width: 100%">
               <canvas id="canvas" height="450" width="600"></canvas>
             </div>
+
       </div>
    
 
+<?startblock('extra');?>
+
+<script src="js/Chart.min.js"></script>
+<script>
+var barChartData = {
+  // 가로축 라벨
+  labels : ["January","February","March","April","May","June","July"],
+  datasets : [
+    {
+      fillColor : "rgba(220,220,220,0.5)",
+      strokeColor : "rgba(220,220,220,0.8)",
+      highlightFill: "rgba(220,220,220,0.75)",
+      highlightStroke: "rgba(220,220,220,1)",
+      // 세로축 데이터들
+      data : [90,99,100,120,123,80,140]
+    }
+  ]
+
+}
+window.onload = function(){
+  var ctx = document.getElementById("canvas").getContext("2d");
+  window.myBar = new Chart(ctx).Bar(barChartData, {
+    responsive : true
+  });
+}
+
+</script>
+
+<?endblock('extra');?>
 
 <?endblock('content');
   startblock('head');
