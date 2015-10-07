@@ -1,4 +1,9 @@
 /*sy*/
+#dropdown{
+  margin: 15px;
+  background-color:#DF314D;
+  border-color: #DF314D;
+}
 .panel-body{
   text-align: center;
 }
@@ -6,10 +11,7 @@
   
   background-color: #DF314D;
 }
-#sidebar{
-  background-color: #DF314D;
-  height: 100%;
-}
+
 .container{
   /*height: 100%;하면 얘가 다 차지하고 밑으로 가버림 */
  
@@ -96,7 +98,7 @@
   height: calc(100%/6);
 }
 
-.fc-calendar .fc-row > div,
+.fc-calendar .fc-row >a> div,
 .fc-calendar .fc-head > div {
   float: left;
   height: 100%;
@@ -108,12 +110,12 @@
 }
 
 /* IE 9 is rounding up the calc it seems */
-.ie9 .fc-calendar .fc-row > div,
+.ie9 .fc-calendar .fc-row >a> div,
 .ie9 .fc-calendar .fc-head > div {
   width:  14.2%;
 }
 
-.fc-calendar .fc-row > div {
+.fc-calendar .fc-row >a> div {
   border-right: 1px solid #ddd;
   padding: 4px;
   overflow: hidden;
@@ -124,7 +126,7 @@
   text-align: center;
 }
 
-.fc-calendar .fc-row > div > span.fc-date {
+.fc-calendar .fc-row >a> div > span.fc-date {
   position: absolute;
   width: 30px;
   height: 20px;
@@ -138,20 +140,20 @@
   text-align: right;
 }
 
-.fc-calendar .fc-row > div > span.fc-weekday {
+.fc-calendar .fc-row >a> div > span.fc-weekday {
   padding-left: 5px;
   display: none;
 }
 
-.fc-calendar .fc-row > div.fc-today {
+.fc-calendar .fc-row >a> div.fc-today {
   background: #fff4c3;
 }
 
-.fc-calendar .fc-row > div.fc-out {
+.fc-calendar .fc-row >a> div.fc-out {
   opacity: 0.6;
 }
 
-.fc-calendar .fc-row > div:last-child,
+.fc-calendar .fc-row >a> div:last-child,
 .fc-calendar .fc-head > div:last-child {
   border-right: none;
 }
@@ -491,16 +493,16 @@ a {
   font-size: 12px;
 }
 
-.fc-calendar .fc-row > div {
+.fc-calendar .fc-row >a> div {
   background: #fff;
   cursor: pointer;
 }
 
-.fc-calendar .fc-row > div:empty {
+.fc-calendar .fc-row >a> div:empty {
   background: transparent;
 }
 
-.fc-calendar .fc-row > div > span.fc-date {
+.fc-calendar .fc-row >a> div > span.fc-date {
   top: 50%;
   left: 50%;
   text-align: center;
@@ -510,12 +512,12 @@ a {
   pointer-events: none;
 }
 
-.fc-calendar .fc-row > div.fc-today {
-  background: #FFE400;
+.fc-calendar .fc-row >a> div.fc-today {
+  background: grey;
   box-shadow: inset 0 -1px 1px rgba(0,0,0,0.1);
 }
 
-.fc-calendar .fc-row > div.fc-today > span.fc-date {
+.fc-calendar .fc-row >a> div.fc-today > span.fc-date {
   color: #fff;
   text-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
@@ -531,22 +533,22 @@ a {
   line-height: 20px;
   left: 50%;
   bottom: 3px;
-}
+}/*dddddd*/
 
-.fc-calendar .fc-row > div.fc-today.fc-content:after {
+.fc-calendar .fc-row >a> div.fc-today.fc-content:after {
   color: #b02c42;
 }
 
-.fc-calendar .fc-row > div.fc-content:hover:after{
+.fc-calendar .fc-row >a> div.fc-content:hover:after{
   color: #5D5D5D;
 }
 
-.fc-calendar .fc-row > div.fc-today.fc-content:hover:after{
+.fc-calendar .fc-row >a> div.fc-today.fc-content:hover:after{
   color: #fff;
 }
 
-.fc-calendar .fc-row > div > div a,
-.fc-calendar .fc-row > div > div span {
+.fc-calendar .fc-row > a>div > div a,
+.fc-calendar .fc-row > a>div > div span {/*이상*/
   display: none;
   font-size: 22px;
 }
@@ -555,7 +557,7 @@ a {
   .fc-calendar-container {
     height: 300px;
   }
-  .fc-calendar .fc-row > div > span.fc-date {
+  .fc-calendar .fc-row >a> div > span.fc-date {
     font-size: 15px;
   }
 }
@@ -598,7 +600,10 @@ body, html {
           background: #DF314D;
           position: absolute;
           width: 240px;
+          background-color: #DF314D;
           height: 100%;
+          z-index: 999;
+          height: 1000px;
           left: -240px;
           box-sizing: border-box;
           -moz-box-sizing: border-box;

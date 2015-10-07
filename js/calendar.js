@@ -177,9 +177,9 @@ window.Modernizr=function(a,b,c){function z(a){j.cssText=a}function A(a,b){retur
 						cellClasses += 'fc-content';
 					}
 
-					html += cellClasses !== '' ? '<div class="' + cellClasses + '">' : '<div>';
+					html += cellClasses !== '' ? '<a href = "showDailyRecord.php?day='+(day-1)+'&month='+(this.month+1)+'&year='+(this.year)+'"><div class="' + cellClasses + '">' : '<a href = "showDailyRecord.php?day='+(day-1)+'&month='+(this.month+1)+'&year='+(this.year)+'"><div>';
 					html += inner;
-					html += '</div>';
+					html += '</div></a>';
 
 				}
 
@@ -264,7 +264,9 @@ window.Modernizr=function(a,b,c){function z(a){j.cssText=a}function A(a,b){retur
 			return this.year;
 		},
 		getMonth : function() {
-			return this.month + 1;
+			var temp;
+			temp = this.month +1;
+			return temp;
 		},
 		getMonthName : function() {
 			return this.options.displayMonthAbbr ? this.options.monthabbrs[ this.month ] : this.options.months[ this.month ];

@@ -39,7 +39,7 @@
           <ul>
             <li class="slidebarText">***님 환영합니다</li>
             <li><a href="todaysExercise.php">오늘의 운동</a></li>
-            <li><a href="exerciseRecord_mainRecord.php">운동기록</a></li>
+            <li><a href="exerciseRecord_mainRecord.php?id=aaaa&exerciseName=shoulder_press">운동기록</a></li>
             <li><a href="dietWar.php">다이어트워
             </a></li>
             <li > </li>

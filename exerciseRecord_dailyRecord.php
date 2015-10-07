@@ -20,7 +20,7 @@
         </nav>-->
 
         <div class="secondTab">
-          <a href="exerciseRecord_mainRecord.php"><p class="left" >주요기록</p></a>
+          <a href="exerciseRecord_mainRecord.php?id=aaaa&exerciseName=shoulder_press"><p class="left" >주요기록</p></a>
           <a href="exerciseRecord_dailyRecord.php"><p class="right" style="background-color:#DF314D">매일기록</p></a>
         </div>
 
